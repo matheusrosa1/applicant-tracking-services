@@ -4,16 +4,19 @@ import {
   Column,
   ManyToOne,
   OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Alternative } from 'src/alternatives/entities/alternative.entity';
-import { Exam } from 'src/exams/entities/exam.entity'; // Supondo que você tenha uma entidade Exam
+import { Answer } from 'src/answers/entities/answer.entity';
+import { Exam } from 'src/exams/entities/exam.entity';
 
 @Entity()
 export class Question {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column('text')
   content: string;
 
   @ManyToOne(() => Exam, (exam) => exam.questions)
@@ -23,4 +26,13 @@ export class Question {
     cascade: true,
   })
   alternatives: Alternative[];
+
+  @OneToMany(() => Answer, (answer) => answer.question)
+  answers: Answer[];
+
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 }
