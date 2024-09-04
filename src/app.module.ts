@@ -1,11 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CandidatesModule } from './candidates/candidates.module';
-import { JobsModule } from './jobs/jobs.module';
-import { ApplicationsModule } from './applications/applications.module';
-import { InterviewSchedulesModule } from './interview-schedules/interview-schedules.module';
-import { JobAssignmentsModule } from './job-assignments/job-assignments.module';
+
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -25,11 +21,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       migrations: [`${__dirname}/migrations/*{.ts,.js}`],
       migrationsRun: true,
     }),
-    CandidatesModule,
-    JobsModule,
-    ApplicationsModule,
-    InterviewSchedulesModule,
-    JobAssignmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
