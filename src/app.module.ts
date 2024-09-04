@@ -4,7 +4,12 @@ import { AppService } from './app.service';
 
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
+import { UsersModule } from './users/users.module';
+import { ExamsModule } from './exams/exams.module';
+import { QuestionsModule } from './questions/questions.module';
+import { AlternativesModule } from './alternatives/alternatives.module';
+import { ApplicationsModule } from './applications/applications.module';
+import { AnswersModule } from './answers/answers.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,6 +26,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       migrations: [`${__dirname}/migrations/*{.ts,.js}`],
       migrationsRun: true,
     }),
+    UsersModule,
+    ExamsModule,
+    QuestionsModule,
+    AlternativesModule,
+    ApplicationsModule,
+    AnswersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
