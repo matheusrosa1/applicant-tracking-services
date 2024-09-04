@@ -1,6 +1,8 @@
+import { Question } from 'src/questions/entities/question.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
-
+// Alternativas de Questões
+@Entity({ name: 'alternative' })
 export class Alternative {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -10,6 +12,9 @@ export class Alternative {
 
   @Column({ name: 'is_correct', default: false })
   isCorrect: boolean;
-
-  @ManyToOne(() => Question, (question) => question.alternatives, onDelete: 'CASCADE')
+  // Muitas alternativas pertencem a uma questão
+  @ManyToOne(() => Question, (question) => question.alternatives, {
+    onDelete: 'CASCADE',
+  })
+  question: Question;
 }

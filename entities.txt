@@ -1,0 +1,48 @@
+1. Users (Usuários)
+id: UUID (Primary Key)
+first_name: string
+last_name: string
+email: string (unique)
+password: string
+is_active: boolean
+created_at: timestamp
+updated_at: timestamp
+
+2. Exams (Provas Técnicas)
+id: UUID (Primary Key)
+title: string
+description: text
+created_at: timestamp
+updated_at: timestamp
+
+3. Questions (Questões)
+id: UUID (Primary Key)
+content: text
+exam_id: UUID (Foreign Key referenciando Exams)
+created_at: timestamp
+updated_at: timestamp
+
+4. Alternatives (Alternativas de Questões)
+id: UUID (Primary Key)
+content: text
+is_correct: boolean (indica se é a alternativa correta)
+question_id: UUID (Foreign Key referenciando Questions)
+created_at: timestamp
+updated_at: timestamp
+
+5. Applications (Inscrições nas Provas Técnicas)
+id: UUID (Primary Key)
+user_id: UUID (Foreign Key referenciando Users)
+exam_id: UUID (Foreign Key referenciando Exams)
+is_finished: boolean (indica se a prova foi finalizada)
+created_at: timestamp
+updated_at: timestamp
+
+6. Answers (Respostas)
+id: UUID (Primary Key)
+application_id: UUID (Foreign Key referenciando Applications)
+question_id: UUID (Foreign Key referenciando Questions)
+alternative_id: UUID (Foreign Key referenciando Alternatives)
+created_at: timestamp
+updated_at: timestamp
+
