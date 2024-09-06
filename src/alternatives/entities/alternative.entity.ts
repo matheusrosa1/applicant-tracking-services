@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 
 // Alternativas de Questões
-@Entity({ name: 'alternative' })
+@Entity({ name: 'alternatives' })
 export class Alternative {
   @PrimaryGeneratedColumn('uuid')
   id: string;
