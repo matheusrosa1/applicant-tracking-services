@@ -6,6 +6,7 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 import { Alternative } from 'src/alternatives/entities/alternative.entity';
 import { Answer } from 'src/answers/entities/answer.entity';
@@ -20,6 +21,7 @@ export class Question {
   content: string;
 
   @ManyToOne(() => Exam, (exam) => exam.questions)
+  @JoinColumn({ name: 'exam_id' })
   exam: Exam;
 
   @OneToMany(() => Alternative, (alternative) => alternative.question, {
