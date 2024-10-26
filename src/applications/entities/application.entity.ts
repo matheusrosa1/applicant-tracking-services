@@ -28,9 +28,15 @@ export class Application {
   @OneToMany(() => Answer, (answer) => answer.application)
   answers: Answer[];
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+  })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({
+    type: 'timestamp',
+    name: 'updated_at',
+  })
   updatedAt: Date;
 }

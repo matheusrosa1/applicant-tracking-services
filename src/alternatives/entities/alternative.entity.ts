@@ -8,6 +8,7 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 
 // Alternativas de Questões
@@ -28,11 +29,20 @@ export class Alternative {
   @ManyToOne(() => Question, (question) => question.alternatives, {
     onDelete: 'CASCADE',
   })
+  @JoinColumn({ name: 'question_id' })
   question: Question;
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }

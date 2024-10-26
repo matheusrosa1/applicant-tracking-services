@@ -27,9 +27,9 @@ export class Answer {
   @JoinColumn({ name: 'alternative_id' })
   alternative: Alternative;
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({ type: 'timestamp', name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({ type: 'timestamp', name: 'updated_at' })
   updatedAt: Date;
 }
