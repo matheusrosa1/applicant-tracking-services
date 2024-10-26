@@ -17,7 +17,9 @@ export class ExamsService {
   }
  */
   async findAll(): Promise<Exam[]> {
-    return this.examRepository.find();
+    return this.examRepository.find({
+      relations: ['questions', 'questions.alternatives'],
+    });
   }
 
   findOne(id: number) {

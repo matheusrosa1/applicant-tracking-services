@@ -10,7 +10,7 @@ import { Application } from 'src/applications/entities/application.entity';
 import { Question } from 'src/questions/entities/question.entity';
 import { Alternative } from 'src/alternatives/entities/alternative.entity';
 
-@Entity({ name: 'answer' })
+@Entity({ name: 'answers' })
 export class Answer {
   @PrimaryGeneratedColumn('uuid')
   id: string;

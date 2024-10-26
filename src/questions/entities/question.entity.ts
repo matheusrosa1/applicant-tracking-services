@@ -11,7 +11,7 @@ import { Alternative } from 'src/alternatives/entities/alternative.entity';
 import { Answer } from 'src/answers/entities/answer.entity';
 import { Exam } from 'src/exams/entities/exam.entity';
 
-@Entity()
+@Entity({ name: 'questions' })
 export class Question {
   @PrimaryGeneratedColumn('uuid')
   id: string;

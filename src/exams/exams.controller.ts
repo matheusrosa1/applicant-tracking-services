@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ExamsService } from './exams.service';
 /* import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto'; */
@@ -22,12 +14,20 @@ export class ExamsController {
 
   @Get()
   findAll() {
-    return this.examsService.findAll();
+    try {
+      return this.examsService.findAll();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.examsService.findOne(+id);
+    try {
+      return this.examsService.findOne(+id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   /*   @Patch(':id')

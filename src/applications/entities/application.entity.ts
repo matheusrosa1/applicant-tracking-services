@@ -12,7 +12,7 @@ import { Exam } from 'src/exams/entities/exam.entity';
 import { Answer } from 'src/answers/entities/answer.entity';
 
 // Inscrições nas Provas Técnicas
-@Entity({ name: 'application' })
+@Entity({ name: 'applications' })
 export class Application {
   @PrimaryGeneratedColumn('uuid')
   id: string;

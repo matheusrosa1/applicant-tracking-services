@@ -10,7 +10,7 @@ import {
 import { Question } from 'src/questions/entities/question.entity';
 import { Application } from 'src/applications/entities/application.entity';
 
-@Entity({ name: 'exam' })
+@Entity({ name: 'exams' })
 export class Exam {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -26,9 +26,17 @@ export class Exam {
   @OneToMany(() => Application, (application) => application.exam)
   applications: Application[];
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }
