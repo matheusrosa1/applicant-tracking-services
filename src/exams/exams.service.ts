@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
-import { CreateExamDto } from './dto/create-exam.dto';
-import { UpdateExamDto } from './dto/update-exam.dto';
+/* import { CreateExamDto } from './dto/create-exam.dto';
+import { UpdateExamDto } from './dto/update-exam.dto'; */
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Exam } from './entities/exam.entity';
 
 @Injectable()
 export class ExamsService {
-  create(createExamDto: CreateExamDto) {
+  constructor(
+    @InjectRepository(Exam)
+    private examRepository: Repository<Exam>,
+  ) {}
+
+  /*   create(createExamDto: CreateExamDto) {
     return 'This action adds a new exam';
   }
-
-  findAll() {
-    return `This action returns all exams`;
+ */
+  async findAll(): Promise<Exam[]> {
+    return this.examRepository.find();
   }
 
   findOne(id: number) {
     return `This action returns a #${id} exam`;
   }
 
-  update(id: number, updateExamDto: UpdateExamDto) {
+  /*   update(id: number, updateExamDto: UpdateExamDto) {
     return `This action updates a #${id} exam`;
-  }
+  } */
 
-  remove(id: number) {
+  /*   remove(id: number) {
     return `This action removes a #${id} exam`;
-  }
+  } */
 }
