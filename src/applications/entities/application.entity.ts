@@ -2,14 +2,12 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   ManyToOne,
-  OneToMany,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { User } from 'src/users/entities/user.entity';
 import { Exam } from 'src/exams/entities/exam.entity';
-import { Answer } from 'src/answers/entities/answer.entity';
 
 // Inscrições nas Provas Técnicas
 @Entity({ name: 'applications' })
@@ -25,18 +23,9 @@ export class Application {
   @JoinColumn({ name: 'exam_id' })
   exam: Exam;
 
-  @OneToMany(() => Answer, (answer) => answer.application)
-  answers: Answer[];
-
-  @CreateDateColumn({
-    name: 'created_at',
-    type: 'timestamp',
-  })
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt: Date;
 
-  @UpdateDateColumn({
-    type: 'timestamp',
-    name: 'updated_at',
-  })
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt: Date;
 }

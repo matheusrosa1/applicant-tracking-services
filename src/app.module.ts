@@ -9,7 +9,6 @@ import { ExamsModule } from './exams/exams.module';
 import { QuestionsModule } from './questions/questions.module';
 import { AlternativesModule } from './alternatives/alternatives.module';
 import { ApplicationsModule } from './applications/applications.module';
-import { AnswersModule } from './answers/answers.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -31,7 +30,6 @@ import { AnswersModule } from './answers/answers.module';
     QuestionsModule,
     AlternativesModule,
     ApplicationsModule,
-    AnswersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
