@@ -9,7 +9,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Alternative } from 'src/alternatives/entities/alternative.entity';
-import { Answer } from 'src/answers/entities/answer.entity';
 import { Exam } from 'src/exams/entities/exam.entity';
 
 @Entity({ name: 'questions' })
@@ -28,9 +27,6 @@ export class Question {
     cascade: true,
   })
   alternatives: Alternative[];
-
-  @OneToMany(() => Answer, (answer) => answer.question)
-  answers: Answer[];
 
   @CreateDateColumn({
     name: 'created_at',

@@ -1,11 +1,9 @@
-import { Answer } from 'src/answers/entities/answer.entity';
 import { Question } from 'src/questions/entities/question.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   JoinColumn,
@@ -19,9 +17,6 @@ export class Alternative {
 
   @Column()
   content: string;
-
-  @OneToMany(() => Answer, (answer) => answer.alternative)
-  answers: Answer[];
 
   @Column({ name: 'is_correct', default: false })
   isCorrect: boolean;
